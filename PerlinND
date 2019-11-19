@@ -7,6 +7,29 @@ namespace PerlinNDim
     class Program
     {
         public enum TypeInterpolation { Lineaire, Cosinus, Hermite, C2 };
+        
+        //Exemple en 2D
+        static void Main(string[] args)
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"D:/XXX.csv"))
+            {
+                for (int i = 0; i < 220; i++)
+                {
+                    if(i%10 ==0)
+                    Console.WriteLine(i);
+                    file.WriteLine();
+                    double x = (double)i / 100.0;
+                    for (int j = 0; j < 220; j++)
+                    {
+                        double y = (double)j / 100.0;
+                        double r = perlin(new double[] { x, y }, 10, TypeInterpolation.C2, 5, 1, 0.5, 2);
+                        file.Write(r + ";");
+                    }
+                }
+            }
+        }
+        
         //Fonctions pseudoAlea
         private static double pseudo_Alea(int N, int seed)
         {
