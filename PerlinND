@@ -148,7 +148,7 @@ namespace PerlinNDim
         private static double perlinSimple(ref double[] Position, int seed, TypeInterpolation TI)
         {
             //Obtient un bruit de perlin itere une fois et de frequence 1
-            return interpolerEspace(Position, new int[Position.Length], Position.Length-1, seed, TI);
+            return Math.Min(Math.Max(interpolerEspace(Position, new int[Position.Length], Position.Length-1, seed, TI),-1.0),1.0);
         }
         
         //A APPELER
